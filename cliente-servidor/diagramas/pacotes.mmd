@@ -1,0 +1,21 @@
+flowchart LR
+
+    subgraph Sistema["Sistema de comunicação"]
+        
+        subgraph Cliente["📦 Aplicação Cliente"]
+            ClientePy["cliente.py"]
+        end
+
+        subgraph Servidor["📦 Aplicação Servidor"]
+            ServidorPy["servidor.py"]
+        end
+    end
+
+    subgraph Plataforma["📦 Biblioteca padrão Python"]
+        Socket["socket"]
+    end
+
+    Cliente -. "«import»" .-> Socket
+    Servidor -. "«import»" .-> Socket
+
+    Cliente <-->|"«TCP/IP»<br/>mensagens UTF-8"| Servidor
